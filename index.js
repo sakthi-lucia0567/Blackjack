@@ -1,6 +1,5 @@
 let firstCard;
 let secondCard;
-let thirdCard;
 let sum;
 let hasBlackjack = false;
 let isAlive = true;
@@ -9,16 +8,27 @@ let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
 
-firstCard = 22; //Math.floor(Math.random() * 12 + 2);
-secondCard = 0; //Math.floor(Math.random() * 12 + 2);
+firstCard = 7; //Math.floor(Math.random() * 12 + 2);
+secondCard = 8; //Math.floor(Math.random() * 12 + 2);
 thirdCard = 9;
+let cards = [firstCard, secondCard];
 sum = firstCard + secondCard;
-takeThirdCard = firstCard + secondCard + thirdCard;
 console.log(firstCard);
 console.log(secondCard);
 console.log(sum);
 
 function startGame() {
+  renderGame();
+}
+
+function addingTwoNumbers() {
+  let a = 1;
+  let b = 2;
+  let c = a + b;
+  console.log(c);
+}
+
+function renderGame() {
   if (sum === 21) {
     message = "Wohoo..! you've got black jack🥳";
     hasBlackjack = true;
@@ -29,16 +39,17 @@ function startGame() {
     isAlive = false;
   }
   messageEl.innerText = message;
-  cardsEl.innerHTML = "Cards : " + firstCard + "   " + secondCard;
+  cardsEl.innerHTML = "Cards : " + card[0] + "   " + card[1];
   sumEl.innerHTML = "Sum : " + sum;
   console.log(message);
 }
 
 function newCard() {
-  cardsEl.innerHTML =
-    "Cards : " + firstCard + "   " + secondCard + " " + thirdCard;
-  sumEl.innerHTML = "Sum : " + takeThirdCard;
-  console.log(message);
+  console.log("Drawing a new card from desk");
+  let card = 9;
+  sum += card;
+  cards.push(card);
+  renderGame();
 }
 
 // var age = window.prompt("Enter your age: ");
